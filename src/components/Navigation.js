@@ -15,7 +15,7 @@ function Navigation() {
   };
 
   useEffect(() => {
-    fetch("http://localhost:3000/avatar", requestOptions) // Ganti dengan URL endpoint server yang sesuai
+    fetch("backendkumpulin-production.up.railway.app/avatar", requestOptions) // Ganti dengan URL endpoint server yang sesuai
       .then((response) => {
         if (response.ok) {
           return response.blob();
@@ -38,7 +38,7 @@ function Navigation() {
   const handleLogout = async () => {
     try {
       // Kirim permintaan logout ke server menggunakan Axios
-      await axios.get("http://localhost:3000/auth/logout");
+      await axios.get("backendkumpulin-production.up.railway.app/auth/logout");
 
       // Setelah logout berhasil, arahkan pengguna ke halaman login
       sessionStorage.removeItem("token");

@@ -30,7 +30,7 @@ const Riwayat = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/submissions/riwayat", {
+      .get("backendkumpulin-production.up.railway.app/submissions/riwayat", {
         withCredentials: true,
       })
       .then((response) => {
@@ -44,7 +44,7 @@ const Riwayat = () => {
 
   // useEffect(() => {
   //   axios
-  //     .post("http://localhost:3000/forms/subimit", { withCredentials: true })
+  //     .post("backendkumpulin-production.up.railway.app/forms/subimit", { withCredentials: true })
   //     .then((response) => {
   //       setSubmit(response.data);
   //       console.log(submit);
@@ -72,7 +72,7 @@ const Riwayat = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/download/${nama_file}`,
+        `backendkumpulin-production.up.railway.app/download/${nama_file}`,
         requestOptions
       );
       alert(response);
@@ -110,7 +110,10 @@ const Riwayat = () => {
       credentials: "include",
     };
 
-    fetch("http://localhost:3000/forms/submit", requestOptions)
+    fetch(
+      "backendkumpulin-production.up.railway.app/forms/submit",
+      requestOptions
+    )
       .then((response) => response.json())
       .then((data) => {
         setSubmit(data[0]); // Mengatur nilai submit dengan titles
@@ -143,7 +146,7 @@ const Riwayat = () => {
     //   redirect: "follow",
     // };
 
-    // try { const res = await fetch("http://localhost:3000/submissions", requestOptions);
+    // try { const res = await fetch("backendkumpulin-production.up.railway.app/submissions", requestOptions);
     //   if (res.statusCode === 200) {
     //     window.location.reload();
     //   }
@@ -162,7 +165,7 @@ const Riwayat = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/submissions",
+        "backendkumpulin-production.up.railway.app/submissions",
         formData,
         {
           withCredentials: true,

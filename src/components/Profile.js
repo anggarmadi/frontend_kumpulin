@@ -36,7 +36,9 @@ const Profile = () => {
   }, []);
   const fetchProfileData = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/users/profile");
+      const response = await axios.get(
+        "backendkumpulin-production.up.railway.app/users/profile"
+      );
       const userData = response.data;
       console.log(userData[0]);
       setName(userData[0].name);
@@ -70,7 +72,7 @@ const Profile = () => {
       };
 
       const res = await fetch(
-        "http://localhost:3000/users/edit",
+        "backendkumpulin-production.up.railway.app/users/edit",
         requestOptions
       );
       const result = await res.json();
@@ -87,11 +89,14 @@ const Profile = () => {
   const handleSave = async () => {
     setEditMode(false);
     try {
-      const response = await axios.post("http://localhost:3000/users/edit", {
-        name,
-        username,
-        email,
-      });
+      const response = await axios.post(
+        "backendkumpulin-production.up.railway.app/users/edit",
+        {
+          name,
+          username,
+          email,
+        }
+      );
       console.log(name);
       console.log("Profile data updated successfully:", response.data);
       // Lakukan tindakan lain setelah data berhasil disimpan ke dalam database
@@ -110,7 +115,7 @@ const Profile = () => {
   };
 
   useEffect(() => {
-    fetch("http://localhost:3000/avatar", requestOptions) // Ganti dengan URL endpoint server yang sesuai
+    fetch("backendkumpulin-production.up.railway.app/avatar", requestOptions) // Ganti dengan URL endpoint server yang sesuai
       .then((response) => {
         if (response.ok) {
           return response.blob();
@@ -181,7 +186,10 @@ const Profile = () => {
       credentials: "include",
     };
 
-    fetch("http://localhost:3000/users/edit", requestOptions)
+    fetch(
+      "backendkumpulin-production.up.railway.app/users/edit",
+      requestOptions
+    )
       .then((response) => response.text())
       .then((result) => {
         console.log(JSON.parse(result));

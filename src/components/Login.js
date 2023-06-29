@@ -14,12 +14,15 @@ const Login = () => {
     setPassword("");
 
     try {
-      const res = await fetch("http://localhost:3000/auth/login", {
-        method: "POST",
-        body: JSON.stringify({ username, password }),
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
-      });
+      const res = await fetch(
+        "backendkumpulin-production.up.railway.app/auth/login",
+        {
+          method: "POST",
+          body: JSON.stringify({ username, password }),
+          headers: { "Content-Type": "application/json" },
+          credentials: "include",
+        }
+      );
       const data = await res.json();
       console.log(data.user);
       if (data.errors) {

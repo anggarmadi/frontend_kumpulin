@@ -43,8 +43,8 @@ const FormAsign = () => {
 
   const getForms = async () => {
     const response = await axios.get(
-      `http://localhost:3000/forms/formMe?page=${page}&limit=${limit}`
-      // `http://localhost:3000/forms`
+      `backendkumpulin-production.up.railway.app/forms/formMe?page=${page}&limit=${limit}`
+      // `backendkumpulin-production.up.railway.app/forms`
     );
     setForms(response.data.result);
     setPage(response.data.page);
@@ -100,7 +100,10 @@ const FormAsign = () => {
     };
 
     try {
-      const res = await fetch("http://localhost:3000/forms", requestOptions);
+      const res = await fetch(
+        "backendkumpulin-production.up.railway.app/forms",
+        requestOptions
+      );
       if (res.status === 200) {
         window.location.replace("/form");
       }
@@ -115,7 +118,7 @@ const FormAsign = () => {
     const formId = form.form_id;
     try {
       const response = await axios.post(
-        `http://localhost:3000/forms/${formId}/delete`,
+        `backendkumpulin-production.up.railway.app/forms/${formId}/delete`,
         {
           withCredentials: true,
         },

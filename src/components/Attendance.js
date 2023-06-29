@@ -18,7 +18,7 @@ const Attendance = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/forms/attend", {
+      .get("backendkumpulin-production.up.railway.app/forms/attend", {
         withCredentials: true,
       })
       .then((response) => {
@@ -37,7 +37,7 @@ const Attendance = () => {
 
     try {
       const response = await axios.get(
-        `http://localhost:3000/download/${nama_file}`,
+        `backendkumpulin-production.up.railway.app/download/${nama_file}`,
         {
           responseType: "blob",
           withCredentials: true,

@@ -14,7 +14,9 @@ const Dash = () => {
   }, []);
 
   const getForms = async () => {
-    const response = await axios.get(`http://localhost:3000/forms/formMe`);
+    const response = await axios.get(
+      `backendkumpulin-production.up.railway.app/forms/formMe`
+    );
 
     setForms(response.data.result);
   };
@@ -29,7 +31,7 @@ const Dash = () => {
 
   const getSubmissions = async () => {
     const response = await axios.get(
-      `http://localhost:3000/submissions/riwayatPage`
+      `backendkumpulin-production.up.railway.app/submissions/riwayatPage`
     );
     setSubmissions(response.data.result);
   };
