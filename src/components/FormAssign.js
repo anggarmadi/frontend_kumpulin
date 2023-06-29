@@ -16,6 +16,7 @@ import { Navigate } from "react-router-dom";
 import Redirect from "./Redirect";
 
 const FormAsign = () => {
+  Redirect("form");
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -42,8 +43,8 @@ const FormAsign = () => {
 
   const getForms = async () => {
     const response = await axios.get(
-      `https://backendkumpulin-production.up.railway.app/forms/formMe?page=${page}&limit=${limit}`
-      // `https://backendkumpulin-production.up.railway.app/forms`
+      `http://localhost:3000/forms/formMe?page=${page}&limit=${limit}`
+      // `http://localhost:3000/forms`
     );
     setForms(response.data.result);
     setPage(response.data.page);
@@ -99,10 +100,7 @@ const FormAsign = () => {
     };
 
     try {
-      const res = await fetch(
-        "https://backendkumpulin-production.up.railway.app/forms/formMe",
-        requestOptions
-      );
+      const res = await fetch("http://localhost:3000/forms", requestOptions);
       if (res.status === 200) {
         window.location.replace("/form");
       }
@@ -117,7 +115,7 @@ const FormAsign = () => {
     const formId = form.form_id;
     try {
       const response = await axios.post(
-        `https://backendkumpulin-production.up.railway.app/forms/${formId}/delete`,
+        `http://localhost:3000/forms/${formId}/delete`,
         {
           withCredentials: true,
         },

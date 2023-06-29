@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Col, Row, Container, Table, Forms, Button } from "react-bootstrap";
 import "../styles/Dash.css";
 import axios from "axios";
+import Redirect from "./Redirect";
 
 const Dash = () => {
+  Redirect("home");
   // const [visibleRows, setVisibleRows] = useState(3);
   const [forms, setForms] = useState([]);
 
@@ -12,9 +14,7 @@ const Dash = () => {
   }, []);
 
   const getForms = async () => {
-    const response = await axios.get(
-      `https://backendkumpulin-production.up.railway.app/forms/formMe`
-    );
+    const response = await axios.get(`http://localhost:3000/forms/formMe`);
 
     setForms(response.data.result);
   };
@@ -29,7 +29,7 @@ const Dash = () => {
 
   const getSubmissions = async () => {
     const response = await axios.get(
-      `https://backendkumpulin-production.up.railway.app/submissions/riwayatPage`
+      `http://localhost:3000/submissions/riwayatPage`
     );
     setSubmissions(response.data.result);
   };

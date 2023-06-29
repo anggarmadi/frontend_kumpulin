@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 // import { useHistory } from "use-history";
 
-const Redirect = () => {
+const Redirect = (path = "home") => {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -14,7 +14,7 @@ const Redirect = () => {
       navigate("/login");
     } else {
       // Jika pengguna sudah login, arahkan ke halaman berikutnya (misalnya halaman home)
-      navigate("/home");
+      navigate("/" + path);
     }
   }, [navigate]);
 

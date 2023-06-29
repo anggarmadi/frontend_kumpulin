@@ -42,10 +42,7 @@ const Register = () => {
       redirect: "follow",
     };
 
-    fetch(
-      "https://backendkumpulin-production.up.railway.app/auth/register",
-      requestOptions
-    )
+    fetch("http://localhost:3000/auth/register", requestOptions)
       .then(function (res) {
         if (res.status === 200) {
           window.location.replace("login");
@@ -56,7 +53,7 @@ const Register = () => {
       .catch((error) => console.log("error", error));
 
     // try {
-    //   await axios.post("https://backendkumpulin-production.up.railway.app/auth/register", {
+    //   await axios.post("http://localhost:3000/auth/register", {
     //     name: name,
     //     email: email,
     //     username: username,

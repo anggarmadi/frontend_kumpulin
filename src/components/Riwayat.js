@@ -13,7 +13,7 @@ import Redirect from "./Redirect";
 import { async } from "q";
 
 const Riwayat = () => {
-  Redirect();
+  Redirect("riwayat");
 
   const [show, setShow] = useState(false);
   const [showModalForm, setShowModalForm] = useState(false); // Add state for the "Add New Form" modal
@@ -30,12 +30,9 @@ const Riwayat = () => {
 
   useEffect(() => {
     axios
-      .get(
-        "https://backendkumpulin-production.up.railway.app/submissions/riwayat",
-        {
-          withCredentials: true,
-        }
-      )
+      .get("http://localhost:3000/submissions/riwayat", {
+        withCredentials: true,
+      })
       .then((response) => {
         setSubmissions(response.data);
         console.log(response.data);
@@ -47,7 +44,7 @@ const Riwayat = () => {
 
   // useEffect(() => {
   //   axios
-  //     .post("https://backendkumpulin-production.up.railway.app/forms/subimit", { withCredentials: true })
+  //     .post("http://localhost:3000/forms/subimit", { withCredentials: true })
   //     .then((response) => {
   //       setSubmit(response.data);
   //       console.log(submit);
@@ -75,7 +72,7 @@ const Riwayat = () => {
 
     try {
       const response = await fetch(
-        `https://backendkumpulin-production.up.railway.app/download/${nama_file}`,
+        `http://localhost:3000/download/${nama_file}`,
         requestOptions
       );
       alert(response);
@@ -113,10 +110,7 @@ const Riwayat = () => {
       credentials: "include",
     };
 
-    fetch(
-      "https://backendkumpulin-production.up.railway.app/forms/submit",
-      requestOptions
-    )
+    fetch("http://localhost:3000/forms/submit", requestOptions)
       .then((response) => response.json())
       .then((data) => {
         setSubmit(data[0]); // Mengatur nilai submit dengan titles
@@ -149,7 +143,7 @@ const Riwayat = () => {
     //   redirect: "follow",
     // };
 
-    // try { const res = await fetch("https://backendkumpulin-production.up.railway.app/submissions", requestOptions);
+    // try { const res = await fetch("http://localhost:3000/submissions", requestOptions);
     //   if (res.statusCode === 200) {
     //     window.location.reload();
     //   }
@@ -168,7 +162,7 @@ const Riwayat = () => {
 
     try {
       const response = await axios.post(
-        "https://backendkumpulin-production.up.railway.app/submissions",
+        "http://localhost:3000/submissions",
         formData,
         {
           withCredentials: true,

@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Dialog } from "primereact/dialog";
+import Redirect from "./Redirect";
+
 // import { Buttons } from "primereact/button";
 import "primereact/resources/themes/lara-light-indigo/theme.css"; //theme
 import "primereact/resources/primereact.min.css"; //core css
@@ -21,6 +23,7 @@ import profilePhoto from "../assets/images/profile.svg";
 import pPhoto from "../assets/images/photo.png";
 
 const Profile = () => {
+  Redirect("profile");
   const [selectedImage, setSelectedImage] = useState(null);
 
   const [editMode, setEditMode] = useState(false);
@@ -33,9 +36,7 @@ const Profile = () => {
   }, []);
   const fetchProfileData = async () => {
     try {
-      const response = await axios.get(
-        "https://backendkumpulin-production.up.railway.app/users/profile"
-      );
+      const response = await axios.get("http://localhost:3000/users/profile");
       const userData = response.data;
       console.log(userData[0]);
       setName(userData[0].name);
@@ -69,7 +70,7 @@ const Profile = () => {
       };
 
       const res = await fetch(
-        "https://backendkumpulin-production.up.railway.app/users/edit",
+        "http://localhost:3000/users/edit",
         requestOptions
       );
       const result = await res.json();
@@ -86,14 +87,11 @@ const Profile = () => {
   const handleSave = async () => {
     setEditMode(false);
     try {
-      const response = await axios.post(
-        "https://backendkumpulin-production.up.railway.app/users/edit",
-        {
-          name,
-          username,
-          email,
-        }
-      );
+      const response = await axios.post("http://localhost:3000/users/edit", {
+        name,
+        username,
+        email,
+      });
       console.log(name);
       console.log("Profile data updated successfully:", response.data);
       // Lakukan tindakan lain setelah data berhasil disimpan ke dalam database
@@ -112,10 +110,7 @@ const Profile = () => {
   };
 
   useEffect(() => {
-    fetch(
-      "https://backendkumpulin-production.up.railway.app/avatar",
-      requestOptions
-    ) // Ganti dengan URL endpoint server yang sesuai
+    fetch("http://localhost:3000/avatar", requestOptions) // Ganti dengan URL endpoint server yang sesuai
       .then((response) => {
         if (response.ok) {
           return response.blob();
@@ -186,10 +181,7 @@ const Profile = () => {
       credentials: "include",
     };
 
-    fetch(
-      "https://backendkumpulin-production.up.railway.app/users/edit",
-      requestOptions
-    )
+    fetch("http://localhost:3000/users/edit", requestOptions)
       .then((response) => response.text())
       .then((result) => {
         console.log(JSON.parse(result));

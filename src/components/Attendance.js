@@ -13,13 +13,12 @@ import Redirect from "./Redirect";
 import { async } from "q";
 
 const Attendance = () => {
-  Redirect();
-
+  Redirect("attd");
   const [attendances, setAtten] = useState([]);
 
   useEffect(() => {
     axios
-      .get("https://backendkumpulin-production.up.railway.app/forms/attend", {
+      .get("http://localhost:3000/forms/attend", {
         withCredentials: true,
       })
       .then((response) => {
@@ -38,7 +37,7 @@ const Attendance = () => {
 
     try {
       const response = await axios.get(
-        `https://backendkumpulin-production.up.railway.app/download/${nama_file}`,
+        `http://localhost:3000/download/${nama_file}`,
         {
           responseType: "blob",
           withCredentials: true,
